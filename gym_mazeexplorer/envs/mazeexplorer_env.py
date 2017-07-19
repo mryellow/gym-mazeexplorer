@@ -15,16 +15,15 @@ class MazeExplorerEnv(gym.Env):
 
     def __init__(self):
         # Start engine, invisible
-        self.engine = MazeExplorer() # False
+        self.engine = MazeExplorer(False)
 
         self.action_space = spaces.Discrete(self.engine.actions_num)
-        #self.observation_space = spaces.Box(-high, high)
+        self.observation_space = spaces.Box(low=0, high=1, shape=(self.engine.observation_num,))
 
         self.viewer = None
         self.state = None
 
         self._seed()
-        #self.reset()
 
     def _seed(self, seed=None):
         self.np_random, seed = seeding.np_random(seed)
@@ -33,13 +32,21 @@ class MazeExplorerEnv(gym.Env):
     def _step(self, action):
         assert self.action_space.contains(action), "%r (%s) invalid"%(action, type(action))
 
-        #return np.array(self.state), reward, done, {}
+        # Act in the environment
+        reward = self.engine.act(action)
+
+        # Create observation from sensor proximities
+        observation = [o.proximity for o in self.engine.world_layer.player.sensors]
+        # Include battery level in state
+        observation.append(self.engine.world_layer.player.stats['battery']/100)
+        self.state = observation
+
         # observation, reward, done, info.
-        return self.engine.act(action)
+        return np.array(self.state), reward, self.engine.world_layer.player.game_over, {}
 
     def _reset(self):
         #self.state = self.np_random.uniform(low=-0.05, high=0.05, size=(4,))
-        #self.state = self.np_random.uniform(low=2, high=8)
+        self.state = self.np_random.uniform(low=0, high=1, size=(self.engine.observation_num,))
         self.engine.create_scene()
 
         return np.array(self.state)
