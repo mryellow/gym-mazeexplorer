@@ -33,13 +33,7 @@ class MazeExplorerEnv(gym.Env):
         assert self.action_space.contains(action), "%r (%s) invalid"%(action, type(action))
 
         # Act in the environment
-        reward = self.engine.act(action)
-
-        # Create observation from sensor proximities
-        observation = [o.proximity_norm() for o in self.engine.world_layer.player.sensors]
-        # Include battery level in state
-        observation.append(self.engine.world_layer.player.stats['battery']/100)
-        self.state = observation
+        self.state, reward = self.engine.act(action)
 
         # observation, reward, done, info.
         return np.array(self.state), reward, self.engine.world_layer.player.game_over, {}
