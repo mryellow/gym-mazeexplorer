@@ -55,7 +55,7 @@ class MazeExplorerEnv(gym.Env):
         #if self.viewer is None:
         #    self.viewer = self.engine.director.window
 
-        #if self.state is None: return None
+        if self.state is None: return None
 
         #return self.viewer.render(return_rgb_array = mode=='rgb_array')
 
