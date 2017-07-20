@@ -36,7 +36,7 @@ class MazeExplorerEnv(gym.Env):
         reward = self.engine.act(action)
 
         # Create observation from sensor proximities
-        observation = [o.proximity for o in self.engine.world_layer.player.sensors]
+        observation = [o.proximity_norm() for o in self.engine.world_layer.player.sensors]
         # Include battery level in state
         observation.append(self.engine.world_layer.player.stats['battery']/100)
         self.state = observation
