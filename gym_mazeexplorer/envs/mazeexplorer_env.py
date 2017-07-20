@@ -33,10 +33,10 @@ class MazeExplorerEnv(gym.Env):
         assert self.action_space.contains(action), "%r (%s) invalid"%(action, type(action))
 
         # Act in the environment
-        self.state, reward = self.engine.act(action)
+        self.state, reward, terminal, info = self.engine.act(action)
 
         # observation, reward, done, info.
-        return np.array(self.state), reward, self.engine.world_layer.player.game_over, {}
+        return np.array(self.state), reward, terminal, info
 
     def _reset(self):
         #self.state = self.np_random.uniform(low=-0.05, high=0.05, size=(4,))
