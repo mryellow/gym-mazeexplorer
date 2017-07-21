@@ -7,9 +7,9 @@ setup(name='gym_mazeexplorer',
       author_email='mr-yellow@mr-yellow.com',
       description='A maze exploration environment for openai/gym',
       packages=find_packages(),
-      url='',
+      url='https://github.com/mryellow/gym-mazeexplorer',
       license='MIT',
-      install_requires=['gym']
+      install_requires=['gym', 'maze_explorer']
 )
 
 
