@@ -1,5 +1,6 @@
 import unittest
 
+import numpy as np
 import gym
 from gym_mazeexplorer.envs.mazeexplorer_env import MazeExplorerEnv
 from time import sleep
@@ -16,7 +17,7 @@ class TestMazeExplorerEnv(unittest.TestCase):
             action = env.action_space.sample()
             observation, reward, done, info = env.step(action)
 
-            #self.assertTrue(type(observation) == numpy.ndarray)
+            self.assertTrue(type(observation) == np.ndarray)
             self.assertTrue(type(reward) == int or type(reward) == float)
             self.assertTrue(type(done) == bool)
             self.assertTrue(type(info) == dict)
