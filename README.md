@@ -24,7 +24,7 @@ Spawn tile is no different to any other from agents perspective, must remember h
 ## Installation
 
 ```bash
-pip install gym-mazeexplorer
+pip install gym_mazeexplorer
 ```
 
 ## Quick example
