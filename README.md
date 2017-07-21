@@ -52,3 +52,9 @@ pip install gym_mazeexplorer
     action = env.action_space.sample()
     observation, reward, done, info = env.step(action)
 ```
+
+## Test
+
+```bash
+python -m unittest discover
+```
