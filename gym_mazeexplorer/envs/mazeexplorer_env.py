@@ -13,9 +13,9 @@ class MazeExplorerEnv(gym.Env):
         'video.frames_per_second' : 50
     }
 
-    def __init__(self):
+    def __init__(self, mode=0):
         # Start engine, invisible
-        self.engine = MazeExplorer(False)
+        self.engine = MazeExplorer(mode, False)
 
         self.action_space = spaces.Discrete(self.engine.actions_num)
         self.observation_space = spaces.Box(low=0, high=1, shape=(self.engine.observation_num,))
@@ -39,7 +39,6 @@ class MazeExplorerEnv(gym.Env):
         return np.array(self.state), reward, terminal, info
 
     def _reset(self):
-        #self.state = self.np_random.uniform(low=-0.05, high=0.05, size=(4,))
         self.state = self.np_random.uniform(low=0, high=1, size=(self.engine.observation_num,))
         self.engine.create_scene()
 
