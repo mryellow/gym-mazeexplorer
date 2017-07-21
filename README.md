@@ -1,6 +1,6 @@
 # gym-mazeexplorer
 
-A maze exploration environment for openai/gym.
+A maze exploration environment for OpenAIGym wrapping [maze_explorer](https://github.com/mryellow/maze_explorer).
 
 ## Game modes
 
