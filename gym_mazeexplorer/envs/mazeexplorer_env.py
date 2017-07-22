@@ -13,9 +13,9 @@ class MazeExplorerEnv(gym.Env):
         'video.frames_per_second' : 50
     }
 
-    def __init__(self, mode=0):
+    def __init__(self, mode_id=0):
         # Start engine, invisible
-        self.engine = MazeExplorer(mode, False)
+        self.engine = MazeExplorer(mode_id, False)
 
         self.action_space = spaces.Discrete(self.engine.actions_num)
         self.observation_space = spaces.Box(low=0, high=1, shape=(self.engine.observation_num,))
