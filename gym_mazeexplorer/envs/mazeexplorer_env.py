@@ -18,7 +18,13 @@ class MazeExplorerEnv(gym.Env):
         self.engine = MazeExplorer(mode_id, False)
 
         self.action_space = spaces.Discrete(self.engine.actions_num)
-        self.observation_space = spaces.Box(low=0, high=1, shape=(self.engine.observation_num,))
+        # Use `observation_chans` to multichannel with `item` sensors.
+        if self.engine.observation_chans > 1:
+            self.shape = (self.engine.observation_num, self.engine.observation_chans)
+        else:
+            self.shape = (self.engine.observation_num,)
+
+        self.observation_space = spaces.Box(low=0, high=1, shape=self.shape)
 
         self.viewer = None
         self.state = None
@@ -35,11 +41,13 @@ class MazeExplorerEnv(gym.Env):
         # Act in the environment
         self.state, reward, terminal, info = self.engine.act(action)
 
+        #assert self.observation_space.contains(self.state), 'Step observation: {!r} not in space'.format(self.state)
+
         # observation, reward, done, info.
         return np.array(self.state), reward, terminal, info
 
     def _reset(self):
-        self.state = self.np_random.uniform(low=0, high=1, size=(self.engine.observation_num,))
+        self.state = self.np_random.uniform(low=0, high=1, size=self.shape)
         self.engine.create_scene()
 
         return np.array(self.state)
