@@ -1,7 +1,7 @@
 from gym.envs.registration import register
 
 register(
-    id='MazeExplorer-v0',
+    id='MazeExplorerEat-v0',
     entry_point='gym_mazeexplorer.envs:MazeExplorerEnv',
     kwargs={
         "mode_id": 0
@@ -12,7 +12,7 @@ register(
 )
 
 register(
-    id='MazeExplorer-v1',
+    id='MazeExplorerExplore-v0',
     entry_point='gym_mazeexplorer.envs:MazeExplorerEnv',
     kwargs={
         "mode_id": 1
