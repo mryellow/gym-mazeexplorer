@@ -14,6 +14,8 @@ pip install -e .
 
 ### Package
 
+* Note: Not registered yet.
+
 ```bash
 pip install gym_mazeexplorer
 ```
