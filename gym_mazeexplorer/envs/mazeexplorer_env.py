@@ -47,8 +47,9 @@ class MazeExplorerEnv(gym.Env):
         return np.array(self.state), reward, terminal, info
 
     def _reset(self):
+        # TODO: Reset to `ones`?
         self.state = self.np_random.uniform(low=0, high=1, size=self.shape)
-        self.engine.create_scene()
+        self.engine.reset()
 
         return np.array(self.state)
 
