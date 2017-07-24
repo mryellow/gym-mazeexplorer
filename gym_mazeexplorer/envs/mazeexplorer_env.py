@@ -53,29 +53,34 @@ class MazeExplorerEnv(gym.Env):
         return np.array(self.state)
 
     def _render(self, mode='human', close=False):
-        #if close:
-        #    if self.viewer is not None:
-        #        self.viewer.close()
-        #        self.viewer = None
-        #    return
+        if close:
+            return
 
         #if self.viewer is None:
         #    self.viewer = self.engine.director.window
 
         if self.state is None: return None
 
-        #return self.viewer.render(return_rgb_array = mode=='rgb_array')
+        #self.viewer.switch_to()
+        #self.viewer.dispatch_events()
+        #self.viewer.dispatch_event('on_draw')
 
-        buffer = pyglet.image.get_buffer_manager().get_color_buffer()
-        image_data = buffer.get_image_data()
-        arr = np.fromstring(image_data.data, dtype=np.uint8, sep='')
-        # In https://github.com/openai/gym-http-api/issues/2, we
-        # discovered that someone using Xmonad on Arch was having
-        # a window of size 598 x 398, though a 600 x 400 window
-        # was requested. (Guess Xmonad was preserving a pixel for
-        # the boundary.) So we use the buffer height/width rather
-        # than the requested one.
-        arr = arr.reshape(buffer.height, buffer.width, 4)
-        arr = arr[::-1,:,0:3]
+        arr = None
+        if return_rgb_array:
+            buffer = pyglet.image.get_buffer_manager().get_color_buffer()
+            image_data = buffer.get_image_data()
+            arr = np.fromstring(image_data.data, dtype=np.uint8, sep='')
+            # In https://github.com/openai/gym-http-api/issues/2, we
+            # discovered that someone using Xmonad on Arch was having
+            # a window of size 598 x 398, though a 600 x 400 window
+            # was requested. (Guess Xmonad was preserving a pixel for
+            # the boundary.) So we use the buffer height/width rather
+            # than the requested one.
+            arr = arr.reshape(buffer.height, buffer.width, 4)
+            arr = arr[::-1,:,0:3]
+
+        #self.viewer.flip()
+        # Ticking before events caused glitches.
+        #pyglet.clock.tick()
 
         return arr
