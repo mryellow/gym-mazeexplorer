@@ -9,7 +9,7 @@ setup(name='gym_mazeexplorer',
       packages=find_packages(),
       url='https://github.com/mryellow/gym-mazeexplorer',
       license='MIT',
-      install_requires=['gym', 'maze_explorer']
+      install_requires=['gym', 'mazeexp']
 )
 
 

@@ -5,7 +5,7 @@ from gym.utils import seeding
 import pyglet
 import numpy as np
 
-from maze_explorer import MazeExplorer
+import mazeexp as mx
 
 class MazeExplorerEnv(gym.Env):
     metadata = {
@@ -15,7 +15,7 @@ class MazeExplorerEnv(gym.Env):
 
     def __init__(self, mode_id=0):
         # Start engine, invisible
-        self.engine = MazeExplorer(mode_id, False)
+        self.engine = mx.MazeExplorer(mode_id, False)
 
         self.action_space = spaces.Discrete(self.engine.actions_num)
         # Use `observation_chans` to multichannel with `item` sensors.
