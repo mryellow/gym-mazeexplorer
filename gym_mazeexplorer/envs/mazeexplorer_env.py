@@ -49,7 +49,8 @@ class MazeExplorerEnv(gym.Env):
     def _reset(self):
         # TODO: Reset to `ones`?
         #self.state = self.np_random.uniform(low=0, high=1, size=self.shape)
-        return np.array(self.engine.reset())
+        self.state = self.engine.reset()
+        return np.array(self.state)
 
     def _render(self, mode='human', close=False):
         #if close:
