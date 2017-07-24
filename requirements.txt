@@ -1,4 +1,4 @@
 gym
 numpy
 pyglet
-maze_explorer
+mazeexp
