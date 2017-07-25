@@ -41,3 +41,15 @@ pip install gym_mazeexplorer
 ```bash
 python -m unittest discover
 ```
+
+## Cite
+
+If you use Maze Explorer in your academic research, we would be grateful if you could cite it as follows:
+
+@misc{king2017mazeexplorer,
+    author = {King},
+    title = {Maze Explorer: A maze exploration game for AI agents},
+    howpublished={Web page},
+    url = {https://github.com/mryellow/maze_explorer},
+    year = {2017}
+}
