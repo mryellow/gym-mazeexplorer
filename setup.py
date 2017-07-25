@@ -10,6 +10,7 @@ setup(name='gym_mazeexplorer',
     url='https://github.com/mryellow/gym-mazeexplorer',
     license='MIT',
     install_requires=['gym', 'mazeexp'],
+    keywords='maze, game, maze-explorer, openaigym, openai-gym',
     classifiers=[
         # How mature is this project? Common values are
         #   3 - Alpha
