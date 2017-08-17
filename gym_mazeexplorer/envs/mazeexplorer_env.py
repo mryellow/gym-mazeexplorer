@@ -10,7 +10,7 @@ import mazeexp as mx
 class MazeExplorerEnv(gym.Env):
     metadata = {
         'render.modes': ['human', 'rgb_array'],
-        'video.frames_per_second' : 50
+        'video.frames_per_second' : 20
     }
 
     def __init__(self, mode_id=0):
