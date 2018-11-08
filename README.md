@@ -45,7 +45,7 @@ python -m unittest discover
 If you use Maze Explorer in your academic research, we would be grateful if you could cite it as follows:
 
 ```
-@misc{king2017mazeexplorer,
+@misc{mryellow2017mazeexplorer,
     author = {Mr-Yellow},
     title = {Maze Explorer: A maze exploration game for AI agents},
     howpublished={Web page},
