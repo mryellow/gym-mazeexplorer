@@ -46,7 +46,7 @@ If you use Maze Explorer in your academic research, we would be grateful if you 
 
 ```
 @misc{king2017mazeexplorer,
-    author = {King},
+    author = {Mr-Yellow},
     title = {Maze Explorer: A maze exploration game for AI agents},
     howpublished={Web page},
     url = {https://github.com/mryellow/maze_explorer},
