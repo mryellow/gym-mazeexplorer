@@ -6,7 +6,7 @@ register(
     kwargs={
         "mode_id": 0
     },
-    timestep_limit=500, # apples/poison aren't being respawned
+    max_episode_steps=500, # apples/poison aren't being respawned
     #"nondeterministic": True,
     #tags=''
 )
